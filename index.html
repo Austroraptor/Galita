@@ -97,7 +97,7 @@ function draw(){
  ctx.fillStyle='#777';
  for(let x=0;x<960;x+=42){ctx.fillRect(x,389+(Math.floor(x/42)%2)*8,24,3)}
  // player
- if(dog.complete)ctx.drawImage(dog,player.x,player.y,player.w,player.h);
+ if(dog.complete){ctx.save();ctx.translate(player.x+player.w,0);ctx.scale(-1,1);ctx.drawImage(dog,0,player.y,player.w,player.h);ctx.restore();}
  // bones
  for(const o of items)if(o.type==='bone'&&!o.got){
    ctx.save();ctx.translate(o.x+21,o.y+11);ctx.rotate(-.18);
